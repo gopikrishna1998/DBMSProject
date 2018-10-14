@@ -78,7 +78,8 @@
         rs=null;
         
         %>
-          <div id="geochart-colors" style="width: 100%; height: 100%;"></div> 
+        <div id="geochart-colors"></div>
+          <!--<div id="geochart-colors" style="width: 100%; height: 100%;"></div>--> 
     </body>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
