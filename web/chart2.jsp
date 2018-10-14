@@ -20,31 +20,31 @@
          
         <script type='text/javascript'>
             var i=0;
-            var a = [];
-            a.push(['State or Union Territory','2001','2011']);
+            var a1 = [];
+            a1.push(['State or Union Territory','2001','2011']);
              //   a[0].push('No_of_Districts');
               //  document.write(a);
                 
             <%
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","MIDHUN1988");
-        Statement stmt = con.createStatement();
-        String sql = "SELECT * FROM MALE_POPULATION"; 
-        ResultSet rs = stmt.executeQuery(sql);  
+        Connection con1 = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","MIDHUN1988");
+        Statement stmt1 = con1.createStatement();
+        String sql1 = "SELECT * FROM MALE_POPULATION"; 
+        ResultSet rs1 = stmt1.executeQuery(sql1);  
         %>
          </script>
        <%   
-        if(rs!=null)
+        if(rs1!=null)
         {
-            while(rs.next())
+            while(rs1.next())
                 
             {
                
         %>
 
         <script>
-            var state_name = "<%=rs.getString("STATE_UT_NAME")%>";
-            var y_2001 = <%=rs.getString("Y_2001")%>;
-            var y_2011 = <%=rs.getString("Y_2011")%>;
+            var state_name = "<%=rs1.getString("STATE_UT_NAME")%>";
+            var y_2001 = <%=rs1.getString("Y_2001")%>;
+            var y_2011 = <%=rs1.getString("Y_2011")%>;
          //  var statename=parseInt('state_name');
 //            console.log((state_name));
 //            console.log(y_2001);
@@ -53,7 +53,7 @@
            // console.log(i);
            i++;
            if(state_name!=='Telangana')  
-         a.push([state_name,y_2001,y_2011]);
+         a1.push([state_name,y_2001,y_2011]);
          
             i=i+1;
        
@@ -64,7 +64,7 @@
         %>
         <script>
             var j;
-            a.sort(compareSecondColumn);
+            a1.sort(compareSecondColumn);
 
         function compareSecondColumn(a, b) {
             if (a[1] === b[1]) {
@@ -77,21 +77,21 @@
 
         for( j=0;j<a.length;j++)
         {
-            console.log(a[j][0]);
-            console.log(a[j][1]);
-             console.log(a[j][2]);
+            console.log(a1[j][0]);
+            console.log(a1[j][1]);
+             console.log(a1[j][2]);
         }
         </script>
         <%
-        stmt.close();
-        rs.close();
-        con.close();
-        stmt=null;  
-        con=null;
-        rs=null;    
+        stmt1.close();
+        rs1.close();
+        con1.close();
         
         %>
-          <div id="columnchart_material"></div>
+        <div id="columnchart_material" overflow: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;></div>
+          <!--<div id="columnchart_material"></div>-->
     </body>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -99,7 +99,7 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data = google.visualization.arrayToDataTable(a);
+        var data = google.visualization.arrayToDataTable(a1);
 
         var options = {
           chart: {
